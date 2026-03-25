@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
+    /* Reset + base */
     * {
       margin: 0;
       padding: 0;
@@ -13,149 +14,153 @@
     }
 
     body {
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: url("onl-home.png") no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    /* Top navigation bar (dark strip at top) */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 60px;
-      background: rgba(5, 10, 20, 0.9);
+      margin: 0;
+      background: #000;
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 40px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      z-index: 10;
+      /* page scrolls if image is taller than screen */
+      overflow-x: hidden;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    nav a {
-      color: #dcdcdc;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: #ffffff;
-    }
-
-    main {
-      min-height: 100vh;
+    /* Container holding the Canva image */
+    .wrapper {
       position: relative;
+      width: 100vw;
+      max-width: 1600px; /* adjust if your Canva export is wider */
     }
 
-    /* Clickable areas over the glowing Canva buttons */
+    .wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Invisible clickable regions */
     .hotspot {
       position: absolute;
       display: block;
-      /* invisible but clickable */
+      /* no background so the Canva design shows through */
     }
 
-    /* Adjust these positions to line up with your buttons.
-       Percentages assume full-screen desktop; tweak in DevTools if needed. */
-    #hs-whats-live {
-      top: 30%;
+    /* ---- TOP NAV HOTSPOTS (positions are estimates; tweak as needed) ---- */
+
+    /* "Overnight Lounge" in the top bar */
+    #nav-home {
+      top: 1.8%;
       left: 8%;
-      width: 26%;
-      height: 10%;
+      width: 18%;
+      height: 4%;
     }
 
-    #hs-wellness {
-      top: 30%;
-      right: 8%;
-      width: 26%;
-      height: 10%;
+    #nav-whats-live {
+      top: 1.8%;
+      left: 32%;
+      width: 10%;
+      height: 4%;
     }
 
-    #hs-recognition {
-      top: 44%;
+    #nav-wellness {
+      top: 1.8%;
+      left: 44%;
+      width: 10%;
+      height: 4%;
+    }
+
+    #nav-recognition {
+      top: 1.8%;
+      left: 56%;
+      width: 12%;
+      height: 4%;
+    }
+
+    #nav-jukebox {
+      top: 1.8%;
+      left: 71%;
+      width: 14%;
+      height: 4%;
+    }
+
+    #nav-activities {
+      top: 1.8%;
+      left: 87%;
+      width: 8%;
+      height: 4%;
+    }
+
+    #nav-resources {
+      top: 1.8%;
+      left: 96%;
+      width: 8%;
+      height: 4%;
+    }
+
+    /* ---- MAIN BUTTON HOTSPOTS (middle of the design) ---- */
+
+    #btn-whats-live {
+      top: 28%;
       left: 8%;
-      width: 26%;
-      height: 10%;
+      width: 24%;
+      height: 8%;
     }
 
-    #hs-jukebox {
-      top: 44%;
+    #btn-wellness {
+      top: 28%;
       right: 8%;
-      width: 26%;
-      height: 10%;
+      width: 24%;
+      height: 8%;
     }
 
-    #hs-resources {
-      top: 58%;
+    #btn-recognition {
+      top: 42%;
+      left: 8%;
+      width: 24%;
+      height: 8%;
+    }
+
+    #btn-jukebox {
+      top: 42%;
+      right: 8%;
+      width: 24%;
+      height: 8%;
+    }
+
+    #btn-resources {
+      top: 56%;
       left: 13%;
-      width: 26%;
-      height: 10%;
+      width: 24%;
+      height: 8%;
     }
 
-    #hs-activities {
-      top: 58%;
+    #btn-activities {
+      top: 56%;
       right: 13%;
-      width: 26%;
-      height: 10%;
-    }
-
-    /* Optional: hide text content off-screen but keep it for accessibility/SEO */
-    .sr-only {
-      position: absolute;
-      left: -9999px;
+      width: 24%;
+      height: 8%;
     }
   </style>
 </head>
 <body>
-  <!-- Top nav text matching your design -->
-  <nav>
-    <a href="#top">Overnight Lounge</a>
-    <a href="#whats-live">What’s Live</a>
-    <a href="#wellness">Wellness</a>
-    <a href="#recognition">Recognition</a>
-    <a href="#jukebox">Late-Night Jukebox</a>
-    <a href="#activities">Activities</a>
-    <a href="#resources">Resources</a>
-  </nav>
+  <div class="wrapper">
+    <!-- IMPORTANT: make sure this filename matches your Canva export exactly -->
+    <img src="onl-home.png" alt="Overnight Lounge (ONL) home page" />
 
-  <main id="top">
-    <!-- Invisible clickable regions over Canva buttons.
-         Change the hrefs to the real pages or sections you want. -->
-    <a id="hs-whats-live" class="hotspot" href="whats-live.html"></a>
-    <a id="hs-wellness" class="hotspot" href="wellness.html"></a>
-    <a id="hs-recognition" class="hotspot" href="recognition.html"></a>
-    <a id="hs-jukebox" class="hotspot" href="jukebox.html"></a>
-    <a id="hs-resources" class="hotspot" href="resources.html"></a>
-    <a id="hs-activities" class="hotspot" href="activities.html"></a>
+    <!-- Top nav clickable areas -->
+    <a id="nav-home" class="hotspot" href="index.html"></a>
+    <a id="nav-whats-live" class="hotspot" href="whats-live.html"></a>
+    <a id="nav-wellness" class="hotspot" href="wellness.html"></a>
+    <a id="nav-recognition" class="hotspot" href="recognition.html"></a>
+    <a id="nav-jukebox" class="hotspot" href="jukebox.html"></a>
+    <a id="nav-activities" class="hotspot" href="activities.html"></a>
+    <a id="nav-resources" class="hotspot" href="resources.html"></a>
 
-    <!-- Hidden, text-only version of your blurbs (for screen readers/search) -->
-    <div class="sr-only">
-      <h1>Overnight Lounge (ONL)</h1>
-      <p>A centralized hub for connection, recognition, games, and late-night support.</p>
-
-      <h2 id="whats-live">What’s Live</h2>
-      <p>Featured posts, active launches, and current ONL updates.</p>
-
-      <h2 id="wellness">Wellness</h2>
-      <p>Breathing breaks, calm spaces, and grounding resources.</p>
-
-      <h2 id="recognition">Recognition</h2>
-      <p>Celebrate team wins, shoutouts, and appreciation moments.</p>
-
-      <h2 id="jukebox">Late-Night Jukebox</h2>
-      <p>Open Cloverjacks Luck Heist and other future games.</p>
-
-      <h2 id="activities">Activities</h2>
-      <p>Games, prompts, challenges, and community engagement.</p>
-
-      <h2 id="resources">Resources</h2>
-      <p>Support links, guides, and helpful ONL tools.</p>
-    </div>
-  </main>
+    <!-- Main glowing button areas -->
+    <a id="btn-whats-live" class="hotspot" href="whats-live.html"></a>
+    <a id="btn-wellness" class="hotspot" href="wellness.html"></a>
+    <a id="btn-recognition" class="hotspot" href="recognition.html"></a>
+    <a id="btn-jukebox" class="hotspot" href="jukebox.html"></a>
+    <a id="btn-resources" class="hotspot" href="resources.html"></a>
+    <a id="btn-activities" class="hotspot" href="activities.html"></a>
+  </div>
 </body>
 </html>
