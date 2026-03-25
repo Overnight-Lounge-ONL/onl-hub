@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
-    /* Make the page exactly one screen tall, no scroll, no black bar */
+    /* Full screen, no scroll */
     html, body {
       margin: 0;
       padding: 0;
@@ -15,19 +15,52 @@
       background: #000;
     }
 
-    /* Wrapper is exactly the viewport */
+    /* Fake browser bar at the very top */
+    .browser-bar {
+      height: 40px;
+      background: linear-gradient(to bottom, #e1e2e6, #c7c8cc);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+    }
+
+    .browser-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .browser-button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .btn-close { background: #ff5f57; }
+    .btn-min   { background: #febc2e; }
+    .btn-max   { background: #28c840; }
+
+    /* (Optional) fake address bar */
+    .browser-address {
+      flex: 1;
+      margin-left: 24px;
+      height: 18px;
+      border-radius: 9px;
+      background: #f4f5f7;
+    }
+
+    /* Wrapper for your Canva image, fills the rest of the screen */
     .wrapper {
       position: relative;
       width: 100vw;
-      height: 100vh;
+      height: calc(100vh - 40px); /* full height minus browser bar */
     }
 
-    /* Image fills the screen vertically, aligned to the top so the moon isn't cut off */
+    /* Image fills the wrapper height, centered horizontally */
     .wrapper img {
       position: absolute;
       top: 0;
       left: 50%;
-      height: 100vh;
+      height: 100%;
       width: auto;
       transform: translateX(-50%);
     }
@@ -38,10 +71,7 @@
       display: block;
     }
 
-    /* Positions are percentages of the image.
-       These should already be close; tweak if needed. */
-
-    /* TOP BUTTONS */
+    /* Button hotpots (same as before; tweak if needed) */
     #btn-whats-live {
       top: 26%;
       left: 9%;
@@ -86,11 +116,21 @@
   </style>
 </head>
 <body>
+  <!-- Fake browser bar -->
+  <div class="browser-bar">
+    <div class="browser-buttons">
+      <div class="browser-button btn-close"></div>
+      <div class="browser-button btn-min"></div>
+      <div class="browser-button btn-max"></div>
+    </div>
+    <div class="browser-address"></div>
+  </div>
+
+  <!-- Canva image + hotspots -->
   <div class="wrapper">
     <!-- Make sure this matches your image filename -->
     <img src="onl-home.png" alt="Overnight Lounge (ONL) home" />
 
-    <!-- Clickable areas over the glowing buttons -->
     <a id="btn-whats-live" class="hotspot" href="whats-live.html"></a>
     <a id="btn-wellness" class="hotspot" href="wellness.html"></a>
     <a id="btn-recognition" class="hotspot" href="recognition.html"></a>
