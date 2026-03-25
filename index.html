@@ -6,33 +6,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
+    /* Make the page exactly one screen tall, no scroll, no black bar */
     html, body {
       margin: 0;
       padding: 0;
-      background: #000; /* black around the image on big screens */
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
     }
 
-    /* Container for the Canva image */
+    /* Wrapper is exactly the viewport */
     .wrapper {
       position: relative;
-      max-width: 1560px;      /* original width of your PNG */
-      margin: 0 auto;         /* center on wide screens */
+      width: 100vw;
+      height: 100vh;
     }
 
+    /* Image fills the screen vertically, aligned to the top so the moon isn't cut off */
     .wrapper img {
-      width: 100%;
-      height: auto;
-      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 100vh;
+      width: auto;
+      transform: translateX(-50%);
     }
 
     /* Invisible clickable areas */
     .hotspot {
       position: absolute;
       display: block;
-      /* no background or border so the design is unchanged */
     }
 
-    /* Percent values are relative to the image (works when it scales) */
+    /* Positions are percentages of the image.
+       These should already be close; tweak if needed. */
 
     /* TOP BUTTONS */
     #btn-whats-live {
@@ -80,11 +87,10 @@
 </head>
 <body>
   <div class="wrapper">
-    <!-- IMPORTANT: filename must match your PNG exactly -->
+    <!-- Make sure this matches your image filename -->
     <img src="onl-home.png" alt="Overnight Lounge (ONL) home" />
 
-    <!-- Invisible links over each glowing button.
-         Change the hrefs to whatever pages/sections you want. -->
+    <!-- Clickable areas over the glowing buttons -->
     <a id="btn-whats-live" class="hotspot" href="whats-live.html"></a>
     <a id="btn-wellness" class="hotspot" href="wellness.html"></a>
     <a id="btn-recognition" class="hotspot" href="recognition.html"></a>
